@@ -1,20 +1,28 @@
-# NetSecurePro / IA22 – Prompts IA
+# NetSecurePro IA22 – Prompts IA
 
-🧠 **Version IA22** – Pack de prompts intelligents pour projets IA modernes.
+📦 **Contenu publié** :
+- Archive ZIP complète des prompts IA
+- Fiche PDF officielle trilingue
+- Image promotionnelle
+- QR code de redirection GitHub Pages
 
-## 📦 Contenu du Pack
-- 📄 Fiche PDF officielle trilingue  
-- 🖼️ Image de promotion (`promo_netsecurepro_ia22.png`)
-- 📱 QR Code GitHub Pages (`qr_netsecurepro_ia22.png`)
+🌍 **Lien GitHub Pages** : [https://milyes.github.io/NetSecurePro-IA22](https://milyes.github.io/NetSecurePro-IA22)
 
-## 🔗 Accès direct
-🌐 [GitHub Pages – IA22](https://milyes.github.io/NetSecurePro-IA22)
+---
 
-📥 [Télécharger l’archive ZIP](./NetSecurePro-IA22.zip)
+## 🧠 Objectif
+Le projet **IA22** de NetSecurePro centralise des prompts IA avancés pour développeurs, chercheurs et experts en cybersécurité.
 
-## 👨‍💻 Auteur
-Zoubirou Mohammed Ilyes  
-🔗 [ORCID: 0009-0007-7571-3178](https://orcid.org/0009-0007-7571-3178)
+## 📁 Fichiers inclus :
+- `NetSecurePro_IA22_FULL.zip`
+- `Fiche_Officielle_Prompts_IA22_NetSecurePro.pdf`
+- `promo_netsecurepro_ia22.png`
+- `qr_netsecurepro_ia22.png`
 
-## 🛡️ Licence
-MIT – © 2025 NetSecurePro
+## 👤 Auteur
+**Zoubirou Mohammed Ilyes**  
+ORCID : [https://orcid.org/0009-0007-7571-3178](https://orcid.org/0009-0007-7571-3178)
+
+---
+
+© 2025 NetSecurePro. Tous droits réservés.

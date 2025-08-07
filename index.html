@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant IA22 – NetSecurePro Fusion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #0078D7;
+      color: white;
+      padding: 20px 0;
+    }
+    main {
+      padding: 30px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #0078D7;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #response {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e6f2ff;
+      border-radius: 6px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Assistant IA22</h1>
+    <p>Fusion intelligente Copilot + ChatGPT</p>
+    <button onclick="launchIA()">Lancer IA</button>
+  </header>
+
+  <main>
+    <textarea id="userInput" placeholder="Pose ta question ici..."></textarea><br>
+    <button onclick="sendToIA()">Envoyer</button>
+    <div id="response"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 – NetSecurePro IA | Zoubirou Mohammed Ilyes</p>
+  </footer>
+
+  <script>
+    function launchIA() {
+      alert("Lancement de l'IA22...");
+      // Tu peux ajouter ici une redirection ou une initialisation
+    }
+
+    async function sendToIA() {
+      const input = document.getElementById("userInput").value;
+      const responseDiv = document.getElementById("response");
+
+      const res = await fetch("http://localhost:5000/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input })
+      });
+
+      const data = await res.json();
+      responseDiv.innerText = data.reply;
+    }
+  </script>
+</body>
+</html>

@@ -1,128 +1,67 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مشروعي الذكي</title>
-  <style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Page Classique</title>
+  <style type="text/css">
     body {
-      font-family: 'Tahoma', sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #f0f0f0;
       margin: 0;
       padding: 0;
-      direction: rtl;
     }
-    header {
-      background-color: #0077b6;
-      color: white;
+    .container {
+      width: 80%;
+      margin: auto;
+      background-color: #fff;
       padding: 20px;
-      text-align: center;
-    }
-    nav {
-      background-color: #023e8a;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    main {
-      padding: 20px;
-    }
-    footer {
-      background-color: #0077b6;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 40px;
-    }
-    .card {
-      background-color: white;
-      padding: 15px;
-      margin: 20px auto;
-      max-width: 600px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    input, textarea {
-      padding: 10px;
-      margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
     }
-    button {
-      margin-top: 15px;
+    .menu {
+      background-color: #333;
       padding: 10px;
-      background-color: #0077b6;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
     }
-    button:hover {
-      background-color: #005f8a;
+    .menu a {
+      color: white;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+    .content {
+      margin-top: 20px;
+    }
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>مرحباً بك في مشروعي الذكي</h1>
-    <p>نستخدم الذكاء الاصطناعي لحماية بياناتك</p>
-  </header>
-
-  <nav>
-    <a href="#">الرئيسية</a>
-    <a href="#">حول المشروع</a>
-    <a href="#contact">اتصل بنا</a>
-  </nav>
-
-  <main>
-    <div class="card">
-      <h2>عن المشروع</h2>
-      <p>يهدف هذا المشروع إلى تطوير حلول أمنية تعتمد على الذكاء الاصطناعي لتحليل البيانات واكتشاف التهديدات السيبرانية.</p>
+  <div class="container">
+    <div class="menu">
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
     </div>
 
-    <div class="card">
-      <h2>مميزاتنا</h2>
-      <ul>
-        <li>تحليل ذكي للبيانات</li>
-        <li>واجهة عربية سهلة الاستخدام</li>
-        <li>دعم فني متواصل</li>
-      </ul>
-    </div>
-
-    <div class="card" id="contact">
-      <h2>نموذج التواصل</h2>
-      <form>
-        <label for="name">الاسم الكامل</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">البريد الإلكتروني</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">رسالتك</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-
-        <button type="submit">إرسال</button>
+    <div class="content">
+      <h1>Bienvenue sur ma page</h1>
+      <p>Voici une page HTML classique, sans HTML5, avec une structure simple et fonctionnelle.</p>
+      <form action="#" method="post">
+        <p><label>Nom : <input type="text" name="nom"></label></p>
+        <p><label>Email : <input type="text" name="email"></label></p>
+        <p><label>Message :<br><textarea name="message" rows="5" cols="40"></textarea></label></p>
+        <p><input type="submit" value="Envoyer"></p>
       </form>
     </div>
-  </main>
 
-  <footer>
-    &copy; 2025 إلياس - جميع الحقوق محفوظة
-  </footer>
+    <div class="footer">
+      &copy; 2025 Ilyes. Tous droits réservés.
+    </div>
+  </div>
 
 </body>
 </html>

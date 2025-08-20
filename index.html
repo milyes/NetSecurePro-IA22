@@ -37,9 +37,7 @@
       color: white;
       text-align: center;
       padding: 10px;
-      position: relative;
-      bottom: 0;
-      width: 100%;
+      margin-top: 40px;
     }
     .card {
       background-color: white;
@@ -48,6 +46,32 @@
       max-width: 600px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005f8a;
     }
   </style>
 </head>
@@ -61,7 +85,7 @@
   <nav>
     <a href="#">الرئيسية</a>
     <a href="#">حول المشروع</a>
-    <a href="#">اتصل بنا</a>
+    <a href="#contact">اتصل بنا</a>
   </nav>
 
   <main>
@@ -77,6 +101,22 @@
         <li>واجهة عربية سهلة الاستخدام</li>
         <li>دعم فني متواصل</li>
       </ul>
+    </div>
+
+    <div class="card" id="contact">
+      <h2>نموذج التواصل</h2>
+      <form>
+        <label for="name">الاسم الكامل</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">رسالتك</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">إرسال</button>
+      </form>
     </div>
   </main>
 

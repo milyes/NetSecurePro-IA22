@@ -3,11 +3,11 @@
 <html lang="fr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Page Classique</title>
+  <title>Page Web Complète</title>
   <style type="text/css">
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
     }
@@ -18,17 +18,50 @@
       padding: 20px;
       border: 1px solid #ccc;
     }
+    .header {
+      background-color: #0055a5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
     .menu {
       background-color: #333;
       padding: 10px;
+      text-align: center;
     }
     .menu a {
       color: white;
       text-decoration: none;
-      margin-right: 15px;
+      margin: 0 15px;
+      font-weight: bold;
     }
     .content {
       margin-top: 20px;
+    }
+    .formulaire {
+      margin-top: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background-color: #0055a5;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #003d7a;
     }
     .footer {
       margin-top: 40px;
@@ -41,21 +74,37 @@
 <body>
 
   <div class="container">
+    <div class="header">
+      <h1>Bienvenue sur mon site</h1>
+      <p>Une page HTML simple et fonctionnelle en français</p>
+    </div>
+
     <div class="menu">
       <a href="#">Accueil</a>
       <a href="#">À propos</a>
+      <a href="#">Services</a>
       <a href="#">Contact</a>
     </div>
 
     <div class="content">
-      <h1>Bienvenue sur ma page</h1>
-      <p>Voici une page HTML classique, sans HTML5, avec une structure simple et fonctionnelle.</p>
-      <form action="#" method="post">
-        <p><label>Nom : <input type="text" name="nom"></label></p>
-        <p><label>Email : <input type="text" name="email"></label></p>
-        <p><label>Message :<br><textarea name="message" rows="5" cols="40"></textarea></label></p>
-        <p><input type="submit" value="Envoyer"></p>
-      </form>
+      <h2>À propos</h2>
+      <p>Ce site est un exemple de page HTML complète, conçue pour être simple, rapide et entièrement en français. Il peut servir de base pour un projet personnel, professionnel ou éducatif.</p>
+
+      <div class="formulaire">
+        <h2>Formulaire de contact</h2>
+        <form action="#" method="post">
+          <label for="nom">Nom :</label>
+          <input type="text" id="nom" name="nom" required>
+
+          <label for="email">Email :</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message :</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <input type="submit" value="Envoyer">
+        </form>
+      </div>
     </div>
 
     <div class="footer">

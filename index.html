@@ -1,116 +1,135 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-  "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Page Web Complète</title>
-  <style type="text/css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue sur mon site</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
+      background-color: #f4f4f4;
     }
-    .container {
-      width: 80%;
-      margin: auto;
-      background-color: #fff;
-      padding: 20px;
-      border: 1px solid #ccc;
-    }
-    .header {
-      background-color: #0055a5;
+    header {
+      background-color: #007BFF;
       color: white;
       padding: 20px;
       text-align: center;
     }
-    .menu {
+    nav {
       background-color: #333;
-      padding: 10px;
-      text-align: center;
+      display: flex;
+      justify-content: center;
     }
-    .menu a {
+    nav a {
       color: white;
+      padding: 14px 20px;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
     }
-    .content {
+    nav a:hover {
+      background-color: #575757;
+    }
+    section {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
       margin-top: 20px;
+      border-radius: 8px;
     }
-    .formulaire {
-      margin-top: 30px;
+    .projets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
+    .carte {
+      flex: 1;
+      min-width: 200px;
+      background-color: #e9ecef;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .carte:hover {
+      transform: scale(1.05);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
     }
     input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #aaa;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
       border-radius: 4px;
     }
-    input[type="submit"] {
-      background-color: #0055a5;
+    button {
+      background-color: #007BFF;
       color: white;
+      padding: 10px;
       border: none;
-      margin-top: 15px;
+      border-radius: 4px;
       cursor: pointer;
     }
-    input[type="submit"]:hover {
-      background-color: #003d7a;
+    button:hover {
+      background-color: #0056b3;
     }
-    .footer {
-      margin-top: 40px;
+    footer {
       text-align: center;
-      font-size: 12px;
-      color: #666;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="header">
-      <h1>Bienvenue sur mon site</h1>
-      <p>Une page HTML simple et fonctionnelle en français</p>
-    </div>
+  <header>
+    <h1>Bienvenue sur mon site</h1>
+    <p>Une page HTML simple et fonctionnelle en français</p>
+  </header>
 
-    <div class="menu">
-      <a href="#">Accueil</a>
-      <a href="#">À propos</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
-    </div>
+  <nav>
+    <a href="#apropos">À propos</a>
+    <a href="#portfolio">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <div class="content">
-      <h2>À propos</h2>
-      <p>Ce site est un exemple de page HTML complète, conçue pour être simple, rapide et entièrement en français. Il peut servir de base pour un projet personnel, professionnel ou éducatif.</p>
+  <section id="apropos">
+    <h2>À propos</h2>
+    <p>Ce site est un exemple de page HTML complète, conçue pour être simple, rapide et entièrement en français. Il peut servir de base pour un projet personnel, professionnel ou éducatif.</p>
+  </section>
 
-      <div class="formulaire">
-        <h2>Formulaire de contact</h2>
-        <form action="#" method="post">
-          <label for="nom">Nom :</label>
-          <input type="text" id="nom" name="nom" required>
-
-          <label for="email">Email :</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message :</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <input type="submit" value="Envoyer">
-        </form>
+  <section id="portfolio">
+    <h2>Mes projets</h2>
+    <div class="projets">
+      <div class="carte">
+        <h3>Site vitrine</h3>
+        <p>Un site simple pour présenter une entreprise locale.</p>
+      </div>
+      <div class="carte">
+        <h3>Application météo</h3>
+        <p>Affiche la météo en temps réel avec une API.</p>
       </div>
     </div>
+  </section>
 
-    <div class="footer">
-      &copy; 2025 Ilyes. Tous droits réservés.
-    </div>
-  </div>
+  <section id="contact">
+    <h2>Formulaire de contact</h2>
+    <form action="#" method="post">
+      <input type="text" name="nom" placeholder="Nom" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" rows="5" placeholder="Message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Ilyes. Tous droits réservés.</p>
+  </footer>
 
 </body>
 </html>

@@ -16,3 +16,32 @@ Rends le script exécutable et lance-le depuis le dossier :
 chmod +x deploy_netsecurepro_ia22.sh
 ./deploy_netsecurepro_ia22.sh
 ```
+# IA22_LOGIC – Documentation Officielle
+
+## Introduction
+Présentation de la vision IA22_LOGIC et du rôle dans la plateforme NetSecurePro.
+
+## Les Trois Piliers
+- **Réactivité** : description + exemples
+- **Résilience** : description + cas d’usage
+- **Adaptabilité** : description + démonstrations IA
+
+## Architecture Technique
+Diagramme (Mermaid) + explication des modules (FastAPI, Flutter, Termux).
+
+## Installation & Déploiement
+- Étapes sous Linux / Termux
+- Docker (optionnel)
+- Lancement API
+
+## API Reference
+Endpoints avec exemples (input/output JSON).
+
+## Exemple Pratique
+Code Python simple pour tester IA22_LOGIC.
+
+## Cas d’Utilisation
+Scénarios concrets (cybersécurité hospitalière, audit réseau, etc.).
+
+## Contact
+Auteur + ORCID + lien GitHub.

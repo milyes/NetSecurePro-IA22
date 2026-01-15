@@ -1,131 +1,145 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>🌐 OMNIA Cockpit V7</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background-color: #0A1931;
-      color: #F0F0F0;
-      padding: 2rem;
-    }
-    h1, h2 {
-      color: #4CAF50;
-    }
-    .badge {
-      display: inline-block;
-      margin: 0.5rem;
-    }
-    .section {
-      margin-top: 2rem;
-      border-top: 1px solid #4CAF50;
-      padding-top: 1rem;
-    }
-    pre {
-      background-color: #1C2A4A;
-      padding: 1rem;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    a {
-      color: #00BFFF;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Zoubirou Mohammed Ilyes">
+    <meta name="description" content="NÉO IA22 – Cockpit Cognitif Souverain – NETSECUREPRO">
+    <title>NÉO IA22 // COCKPIT SOUVERAIN – NÉO_DZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05070f;
+            --accent: #00ff9d;
+            --glow: rgba(0,255,157,0.35);
+            --text: #e0ffe8;
+            --dim: #00b36b;
+            --card: rgba(0,0,0,0.65);
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 85%, var(--glow) 0%, transparent 50%);
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 3rem 1.5rem; }
+        header { text-align: center; margin-bottom: 4rem; }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            color: var(--accent);
+            text-shadow: 0 0 15px var(--glow);
+            letter-spacing: 5px;
+            margin: 0;
+        }
+        .subtitle { font-size: 1.2rem; color: var(--dim); margin-top: 0.8rem; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,255,157,0.15);
+            transition: all 0.3s ease;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 0 30px rgba(0,255,157,0.35); }
+        .card-header {
+            background: rgba(0,255,157,0.12);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .card-body { padding: 1.5rem; font-size: 0.95rem; line-height: 1.5; }
+        .preview {
+            height: 180px;
+            background: #000;
+            margin: 0 1.5rem 1rem;
+            border: 1px solid var(--dim);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transform: scale(0.6);
+            transform-origin: top left;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.4rem;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #00cc7a; transform: scale(1.03); }
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--dim);
+            margin-top: 4rem;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>NÉO IA22</h1>
+            <div class="subtitle">COCKPIT COGNITIF SOUVERAIN • NETSECUREPRO • NÉO_DZ</div>
+        </header>
 
-  <h1>🌐 OMNIA Cockpit V7 : Activation Souveraine</h1>
-  <p><strong>Architecte :</strong> Mohammed Ilyes Zoubirou (DZROUGE)<br>
-     <strong>Date :</strong> 2025-09-26 16:24</p>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">TERMINAL ORIGINEL</div>
+                <div class="preview"><iframe src="ia.html" title="Terminal Originel"></iframe></div>
+                <div class="card-body">Splash-screen fondateur – déclaration de souveraineté absolue.</div>
+                <a href="ia.html" class="btn" target="_blank">ACCÉDER</a>
+            </div>
 
-  <div class="badge">
-    <a href="./OMNIA_COCKPIT.md">
-      <img src="https://img.shields.io/badge/OMNIA_Souverainet%C3%A9-ACTIF-0A1931?style=for-the-badge&logo=openvpn&logoColor=white" alt="OMNIA Souveraineté">
-    </a>
-  </div>
-  <div class="badge">
-    <a href="https://github.com/EpicGames">
-      <img src="https://img.shields.io/badge/GitHub-EpicGames_Verified-4CAF50?style=for-the-badge&logo=github&logoColor=white" alt="EpicGames Verified">
-    </a>
-  </div>
+            <div class="card">
+                <div class="card-header">TERMINAL ISIAH</div>
+                <div class="preview"><iframe src="Isiah.html" title="Terminal Isiah"></iframe></div>
+                <div class="card-body">Variante renforcée du terminal originel.</div>
+                <a href="Isiah.html" class="btn" target="_blank">ACCÉDER</a>
+            </div>
 
-  <div class="section">
-    <h2>🧠 Terminal IA22 LOGIC V7</h2>
-    <ul>
-      <li>Interface NEON V7 : <strong>ACTIF</strong></li>
-      <li>Token : <strong>NSP-IA22-VALID</strong></li>
-      <li>Crypto : <strong>AES-256</strong></li>
-      <li>Traçabilité : <strong>Firebase Export</strong></li>
-    </ul>
-  </div>
+            <div class="card">
+                <div class="card-header">DASHBOARD V7.2</div>
+                <div class="preview"><iframe src="dia.html" title="Dashboard V7.2"></iframe></div>
+                <div class="card-body">Vue condensée CORE_ACTIVE – version 7.2.</div>
+                <a href="dia.html" class="btn" target="_blank">ACCÉDER</a>
+            </div>
 
-  <div class="section">
-    <h2>🔐 Tunnel OMNIA VPN</h2>
-    <pre>
-Serveur: omnia.netsecurepro.com
-Chiffrement: AES-256-CBC + SHA512
-Artefact: omnia.ovpn
-Fuite DNS/IPv4/IPv6 : NON DÉTECTÉE
-    </pre>
-  </div>
+            <div class="card">
+                <div class="card-header">CORE NODE TERMINAL</div>
+                <div class="preview"><iframe src="terminal_cn.html" title="Core Node Terminal"></iframe></div>
+                <div class="card-body">Terminal interactif v7.3 – monitoring CN + commandes étendues.</div>
+                <a href="terminal_cn.html" class="btn" target="_blank">ACCÉDER</a>
+            </div>
+        </div>
 
-  <div class="section">
-    <h2>🧬 GitHub EpicGames</h2>
-    <ul>
-      <li><a href="https://github.com/milyes/IA22_LOGICVMMQEM">IA22_LOGICVMMQEM</a> – Moteur VM IA</li>
-      <li><a href="https://github.com/milyes/NetSecurePro-site">NetSecurePro-site</a> – Interface cockpit</li>
-      <li><a href="https://github.com/milyes/IA23">IA23</a> – Évolution cognitive</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>📐 Schéma Technique</h2>
-    <pre>
-┌──────────────┐
-│ IA22_LOGIC   │ ← Moteur décisionnel
-└────┬─────────┘
-     ▼
-┌──────────────┐
-│ SCADA_SHIELD │ ← Simulation ICS
-└────┬─────────┘
-     ▼
-┌──────────────┐
-│ CoopKit IA   │ ← Sceau émotionnel
-└────┬─────────┘
-     ▼
-┌──────────────┐
-│ OMNIA VPN    │ ← Tunnel souverain
-└──────────────┘
-    </pre>
-  </div>
-
-  <div class="section">
-    <h2>📦 Créer un Projet Souverain</h2>
-    <ol>
-      <li>Forker <a href="https://github.com/milyes/IA22_LOGICVMMQEM">IA22_LOGICVMMQEM</a></li>
-      <li>Activer <code>seal_emotional_trace()</code> via CoopKit IA</li>
-      <li>Configurer <code>omnia.ovpn</code> dans OpenVPN</li>
-      <li>Signer avec SHA256 + PGP</li>
-      <li>Publier la capsule cognitive dans le cockpit</li>
-    </ol>
-  </div>
-
-  <div class="section">
-    <h2>🧠 Capsule Cognitive</h2>
-    <p>Ce cockpit ne collecte pas — il <strong>active</strong>.  
-       Chaque impulsion est une trace. Chaque trace est une preuve.  
-       Chaque preuve est une souveraineté.</p>
-  </div>
-
+        <footer>
+            © 2025–2026 NETSECUREPRO (NÉO_DZ) // IA23 PROTOCOL<br>
+            Souveraineté Absolue – ZOUBIROU MOHAMMED ILYES – ORCID 0009-0007-7571-3178
+        </footer>
+    </div>
 </body>
 </html>
-=======
-[collez le code fourni précédemment]
->>>>>>> 301ed8f (Déploiement cockpit unifié IA22 – portail souverain central)

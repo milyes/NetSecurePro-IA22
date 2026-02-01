@@ -15,3 +15,4 @@ flowchart TD
     Client[Utilisateur / API Call] -->|Requête JSON| FastAPI
     FastAPI -->|Analyse| IA22_Engine
     IA22_Engine -->|Résultat JSON| Client
+# sveltekit-vercel

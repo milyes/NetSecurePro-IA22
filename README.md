@@ -1,18 +1,34 @@
-# IA22_LOGIC – Documentation Officielle
+# 🔒 PROJET : NetSecurePro-IA22
+### **Sujet :** Système Souverain d'Infrastructure Numérique
+### **Architecte en Chef :** [Zoubirou Mohammed Ilyes](https://github.com/milyes)
 
-## Introduction
-IA22_LOGIC est un moteur intelligent conçu pour évaluer la posture de sécurité d’une organisation.  
-Il repose sur trois piliers fondamentaux : réactivité, résilience, adaptabilité.  
+---
 
-## Les Trois Piliers
-- **Réactivité** : détecter et réagir rapidement aux menaces pour limiter les impacts.  
-- **Résilience** : assurer la continuité des opérations critiques malgré les attaques.  
-- **Adaptabilité** : s’adapter aux nouvelles menaces grâce à l’IA et une veille proactive.  
+## ☣️ NIVEAU D'ACCÈS : MAÎTRE SOUVERAIN
+> **AVERTISSEMENT :** Ce dépôt contient les noyaux logiques de l'empire **dzrouge.com**. 
+> Toute tentative d'intrusion sera tracée par le protocole IA22.
 
-## Architecture Technique
-```mermaid
-flowchart TD
-    Client[Utilisateur / API Call] -->|Requête JSON| FastAPI
-    FastAPI -->|Analyse| IA22_Engine
-    IA22_Engine -->|Résultat JSON| Client
-# sveltekit-vercel
+---
+
+## 📂 STRUCTURE DU NOYAU
+* **[PORTAIL]** : Interface Matrix v10 (index.html)
+* **[NOYAU IA]** : Centre de calcul interactif (/ia)
+* **[COMMUNICATIONS]** : Système Messenger sécurisé
+* **[SENTINELLE]** : Script de nettoyage automatique (30 jours)
+
+---
+
+## 🛡️ PROTOCOLES ACTIFS
+1.  **Reconnaissance Bio-Digitale** :  actif.
+2.  **Easter Egg** : Code secret **IA22** opérationnel.
+3.  **Maintenance** : Auto-purge des logs activée.
+
+---
+
+## 📡 ÉTAT DU DÉPLOIEMENT
+* **Domaine :** dzrouge.com
+* **Status :** Propagation DNS en cours...
+* **Synchronisation :** Termux x GitHub (Mirroring Parfait)
+
+---
+**© 2026 Zoubirou Mohammed Ilyes. Tous droits réservés.**

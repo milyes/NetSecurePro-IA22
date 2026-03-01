@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ubuntu – Système d’exploitation open source puissant</title>
+  <meta name="description" content="Téléchargez Ubuntu Desktop gratuitement – Le système Linux le plus populaire au monde pour développeurs, cybersécurité et IA. Version actuelle : 25.10 / LTS 24.04"/>
+  <style>
+    :root {
+      --primary: #e95420;     /* Orange Ubuntu officiel */
+      --accent: #77216f;      /* Violet Ubuntu */
+      --dark: #2c001e;
+      --text: #f8f8f8;
+      --gray: #aaaaaa;
+      --bg-gradient: linear-gradient(135deg, #2c001e 0%, #330033 50%, #2c001e 100%);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Ubuntu', system-ui, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    header {
+      background: rgba(44, 0, 30, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 1.8rem 6%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+    }
+    .logo {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -1px;
+      text-shadow: 0 0 15px rgba(233,84,32,0.4);
+    }
+    .logo span { color: white; }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 6% 7rem;
+    }
+    .hero {
+      max-width: 1000px;
+      text-align: center;
+    }
+    h1 {
+      font-size: clamp(3rem, 9vw, 6rem);
+      margin-bottom: 1.8rem;
+      line-height: 1.1;
+      text-shadow: 0 5px 30px rgba(0,0,0,0.6);
+    }
+    .subtitle {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      opacity: 0.92;
+    }
+    .cta {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      padding: 1.2rem 3.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 12px 35px rgba(233,84,32,0.4);
+      transition: all 0.35s ease;
+      margin: 1.2rem;
+    }
+    .cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 45px rgba(233,84,32,0.55);
+      background: #ff6b3d;
+    }
+    .cta.secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .cta.secondary:hover {
+      background: rgba(233,84,32,0.15);
+    }
+    .version-info {
+      font-size: 1.3rem;
+      margin: 2.5rem 0;
+      color: var(--gray);
+    }
+    .version-info strong {
+      color: var(--primary);
+    }
+    footer {
+      background: rgba(44, 0, 30, 0.9);
+      padding: 3rem 6%;
+      text-align: center;
+      font-size: 1rem;
+      border-top: 1px solid rgba(233,84,32,0.2);
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 640px) {
+      h1 { font-size: 3.8rem; }
+      .cta { font-size: 1.3rem; padding: 1rem 2.5rem; }
+      .subtitle { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://ubuntu.com" class="logo">Ubuntu</a>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Ubuntu<br>Liberté. Puissance. Sécurité.</h1>
+      
+      <p class="subtitle">
+        Le système d’exploitation open source le plus populaire au monde.<br>
+        Idéal pour le développement IA, la cybersécurité, les serveurs et les desktops modernes.<br>
+        Gratuit, sécurisé, mis à jour en continu.
+      </p>
+
+      <div class="version-info">
+        Version actuelle recommandée : <strong>25.10 (Questing Quokka)</strong><br>
+        LTS stable longue durée : <strong>24.04 Noble Numbat</strong> (support jusqu’en 2029+)
+      </div>
+
+      <div>
+        <a href="https://ubuntu.com/download/desktop" class="cta" target="_blank" rel="noopener">Télécharger Ubuntu maintenant →</a>
+        <a href="https://ubuntu.com/download" class="cta secondary" target="_blank" rel="noopener">Voir toutes les versions</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025–2026 – Inspiré par Ubuntu et les communautés open source<br>
+      Site officiel : <a href="https://ubuntu.com" target="_blank" rel="noopener">ubuntu.com</a><br>
+      Pour la cybersécurité & IA souveraine : <a href="https://netsecurepro.ca">netsecurepro.ca</a> – Mohammed Ilyes Zoubirou
+    </p>
+  </footer>
+
+</body>
+</html>

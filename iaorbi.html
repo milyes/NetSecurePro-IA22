@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORBITRON // UBUNTU INTELLIGENCE HUB</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: bold;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #0f0;
+    }
+    .terminal {
+      background-color: #001;
+      border: 1px solid #0f0;
+      padding: 10px;
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .input {
+      color: #0f0;
+      background: none;
+      border: none;
+      width: 100%;
+      outline: none;
+    }
+    .output {
+      margin-bottom: 10px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #001;
+      border: 1px solid #0f0;
+      padding: 20px;
+      width: 80%;
+      max-width: 600px;
+      z-index: 1000;
+    }
+    .modal-content {
+      color: #0f0;
+    }
+    .close {
+      color: #f00;
+      float: right;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span>ORBITRON // UBUNTU INTELLIGENCE</span>
+    <span>ICE_SHIELD: ACTIVE <span id="timer">00 h 00 min 00 s</span></span>
+  </header>
+  <div class="terminal" id="terminal">
+    <div class="output">[OS] Ubuntu Intelligence Activated</div>
+    <div class="output">[SYSTEM] Noyau IA22 prêt.</div>
+    <div class="output">[INFO] Commandes : studio, launch, ubuntu.</div>
+    <div class="output">Tapez 'studio' ou 'launch'...</div>
+    <div id="console"></div>
+    <span>> </span><input class="input" id="input" autofocus>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">[X]</span>
+    <div class="modal-content">
+      <h2>UBUNTU_INTELLIGENCE // APPS</h2>
+      <p>Système déployé :</p>
+      <ul>
+        <li>1. Drive Core Storage</li>
+        <li>2. Fullscreen Applet ⚡</li>
+      </ul>
+      <p>Description: Environnement Ubuntu web sophistiqué piloté par Gemini 3 Flash.</p>
+      <button onclick="launchApplet()">LANCER L'APPLET</button>
+    </div>
+  </div>
+
+  <script>
+    const timer = document.getElementById('timer');
+    let h = 0, m = 0, s = 0;
+    setInterval(() => {
+      s++;
+      if (s === 60) { s = 0; m++; }
+      if (m === 60) { m = 0; h++; }
+      timer.textContent = `${h.toString().padStart(2, '0')} h ${m.toString().padStart(2, '0')} min ${s.toString().padStart(2, '0')} s`;
+    }, 1000);
+
+    const input = document.getElementById('input');
+    const consoleDiv = document.getElementById('console');
+    const modal = document.getElementById('modal');
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = input.value.trim();
+        if (cmd) {
+          const out = document.createElement('div');
+          out.className = 'output';
+          out.textContent = `> ${cmd}`;
+          consoleDiv.appendChild(out);
+          processCommand(cmd);
+        }
+        input.value = '';
+      }
+    });
+
+    function processCommand(cmd) {
+      const out = document.createElement('div');
+      out.className = 'output';
+      switch (cmd.toLowerCase()) {
+        case 'studio':
+          out.textContent = '[STUDIO] Dashboard V-IA22 chargé...';
+          break;
+        case 'launch':
+          openModal();
+          out.textContent = '[LAUNCH] Noyau GEMINI CORE V7 démarré.';
+          break;
+        case 'ubuntu':
+          out.textContent = '[UBUNTU] Mode Intelligence Ubuntu activé.';
+          break;
+        default:
+          out.textContent = 'Commande inconnue. Tapez "studio" ou "launch".';
+      }
+      consoleDiv.appendChild(out);
+      consoleDiv.scrollTop = consoleDiv.scrollHeight;
+    }
+
+    function openModal() {
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function launchApplet() {
+      alert('Applet lancé ! (Simulation fullscreen)'); // Remplace par ton code fullscreen réel
+    }
+  </script>
+</body>
+</html>

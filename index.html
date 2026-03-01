@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NetSecurePro – IA & Cybersécurité</title>
+  <meta name="description" content="Plateforme IA pour la cybersécurité et l'intelligence médicale – NetSecurePro.ca"/>
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --dark: #0a1f44;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: rgba(10, 31, 68, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .logo span { color: white; }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 5% 6rem;
+    }
+    .hero {
+      max-width: 900px;
+      text-align: center;
+    }
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      text-shadow: 0 4px 25px rgba(0,0,0,0.5);
+    }
+    .subtitle {
+      font-size: 1.4rem;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+    }
+    .cta {
+      display: inline-block;
+      background: white;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 1.3rem;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      transition: all 0.3s ease;
+      margin: 1rem;
+    }
+    .cta:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+      background: #f0f4ff;
+    }
+    .cta.secondary {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    .cta.secondary:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    footer {
+      background: rgba(10, 31, 68, 0.9);
+      padding: 2.5rem 5%;
+      text-align: center;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 640px) {
+      .cta { padding: 0.9rem 2rem; font-size: 1.1rem; }
+      h1 { font-size: 3.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="https://netsecurepro.ca" class="logo">Net<span>Secure</span>Pro</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>IA + Cybersécurité<br>du futur, aujourd'hui</h1>
+      <p class="subtitle">
+        Plateforme intelligente pour la protection avancée, l'analyse de menaces en temps réel et l'intelligence médicale.
+        Développée par Mohammed Ilyes Zoubirou.
+      </p>
+      <div>
+        <a href="https://netsecurepro.ca" class="cta">Accéder à NetSecurePro.ca →</a>
+        <a href="https://netsecurepro.ca" class="cta secondary">Découvrir la plateforme</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025–2026 NetSecurePro – Tous droits réservés<br>
+      Site officiel : <a href="https://netsecurepro.ca" target="_blank" rel="noopener">netsecurepro.ca</a><br>
+      Contact : milyes@netsecurepro.ca
+    </p>
+  </footer>
+
+</body>
+</html>

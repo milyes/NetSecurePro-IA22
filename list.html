@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA22_LOGIC — Catalogue des commandes</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0a0a0a;
+      color: #0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00ff88;
+      text-shadow: 0 0 10px #0f0;
+    }
+    #search {
+      width: 100%;
+      padding: 12px;
+      margin: 20px 0;
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      font-size: 1.1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #111;
+      border: 1px solid #0f0;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #0f0;
+      text-align: left;
+    }
+    th {
+      background: #0a330a;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      border: none;
+      padding: 8px 12px;
+      margin: 0 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #00cc00;
+    }
+    .category {
+      margin-bottom: 40px;
+    }
+    #controls {
+      margin: 20px 0;
+    }
+    #no-results {
+      color: #ff4444;
+      font-size: 1.2em;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>IA22_LOGIC — Catalogue des commandes</h1>
+  <p>Liste centralisée des commandes NetSecurePro IA – Système souverain, privacy-first, zero-retention.</p>
+
+  <input type="text" id="search" placeholder="Rechercher une commande ou description..." />
+
+  <div id="controls">
+    <button onclick="clearSearch()">Effacer recherche</button>
+    <button onclick="exportCSV()">Exporter en CSV</button>
+  </div>
+
+  <div id="no-results">Aucune commande trouvée.</div>
+
+  <div id="commands-container"></div>
+
+  <script>
+    // Toutes les commandes intégrées directement (pas de fetch externe)
+    const commandsData = {
+      categories: [
+        {
+          name: "Setup & Initialisation",
+          icon: "⚙️",
+          commands: [
+            {command: "ia22 init --secure --purge=30s", description: "Initialisation sécurisée avec purge auto logs"},
+            {command: "deploy netsecurepro_ia22.sh --full", description: "Déploiement complet stack (console, API, modules)"},
+            {command: "ia22 env create --isolated --sandbox", description: "Création environnement virtuel isolé"},
+            {command: "ia22 self-check --integrity --hash", description: "Vérification intégrité noyau IA22"},
+            {command: "ia22 upgrade --force", description: "Mise à jour forcée vers dernière version IA22"}
+          ]
+        },
+        {
+          name: "NER-SEND & Communication",
+          icon: "📡",
+          commands: [
+            {command: "push ner-send \"test\" to localhost", description: "Envoi paquet NER-SEND vers cible locale"},
+            {command: "push ner-send \"classified mock\" to 10.0.0.1 --encrypt=aes256", description: "Envoi chiffré AES-256 via relais orbital"},
+            {command: "ner-send status --queue", description: "Statut file d'attente NER-SEND"},
+            {command: "ner-send purge queue --force", description: "Purge forcée file NER-SEND"},
+            {command: "ner-send retry last", description: "Réessayer dernier paquet échoué"}
+          ]
+        },
+        {
+          name: "NÉO_DZ Forensics & Sniff",
+          icon: "🔍",
+          commands: [
+            {command: "packet sniff localhost --duration=60s --filter=host 127.0.0.1", description: "Capture réseau loopback ciblée"},
+            {command: "analyze packet \"classified mock\" --entropy --hash", description: "Analyse forensics (entropie, SHA-256)"},
+            {command: "neo-dz entropy check --min=7.8", description: "Vérification entropie minimale flux"},
+            {command: "neo-dz intrusion trace --backtrack", description: "Backtrace source intrusion simulée"},
+            {command: "neo-dz purge artifacts --all", description: "Purge tous artefacts forensics"}
+          ]
+        },
+        {
+          name: "Orbital Relay & Sync",
+          icon: "🛰️",
+          commands: [
+            {command: "relay send \"data\" to 10.0.0.1 --level=4 --encrypt", description: "Envoi relais orbital niveau 4 chiffré"},
+            {command: "initiate orbital sync level 5 --multi-node", description: "Sync multi-nœuds avancée"},
+            {command: "orbital status --latency --keys", description: "Statut relais (latence, clés éphémères)"},
+            {command: "orbital purge cache --force", description: "Purge cache relais orbital"},
+            {command: "orbital key rotate", description: "Rotation manuelle clés orbitales"}
+          ]
+        },
+        {
+          name: "Purge & Sécurité",
+          icon: "🧹",
+          commands: [
+            {command: "purge all logs now --force", description: "Purge immédiate forcée logs"},
+            {command: "full system purge --deep", description: "Purge totale (logs, cache, buffers, relais)"},
+            {command: "security lockdown enable --strict", description: "Mode bunker (aucune sortie)"},
+            {command: "rotate keys --ephemeral --all", description: "Rotation toutes clés éphémères"},
+            {command: "security scan --vulnerability", description: "Scan vulnérabilités internes"}
+          ]
+        },
+        {
+          name: "AIMEDIXAL & Santé",
+          icon: "🩺",
+          commands: [
+            {command: "aimedixal scan mock --local --parkinson", description: "Simulation scan Parkinson local"},
+            {command: "aimedixal entropy monitor --real-time", description: "Monitoring entropie signaux biomédicaux"},
+            {command: "aimedixal export encrypted --capsule", description: "Export données santé en capsule scellée"},
+            {command: "aimedixal purge data --hipaa", description: "Purge conformité HIPAA/GDPR"}
+          ]
+        },
+        {
+          name: "MULTICLASS_CLONE",
+          icon: "🧬",
+          commands: [
+            {command: "clone create --domain=cyber --isolated", description: "Création clone cybersécurité isolé"},
+            {command: "clone status cyber", description: "Statut clone cybersécurité"},
+            {command: "clone purge all --force", description: "Purge tous clones actifs"},
+            {command: "clone sync cyber to health", description: "Sync clone cybersécu vers santé"}
+          ]
+        },
+        {
+          name: "Export & Backup",
+          icon: "💾",
+          commands: [
+            {command: "export rootfs --encrypted --aes256", description: "Export rootfs chiffré AES-256"},
+            {command: "backup logic_data --daily --auto", description: "Backup quotidien dossier logic_data"},
+            {command: "export capsule --data \"output\"", description: "Création capsule scellée avec output"}
+          ]
+        },
+        {
+          name: "Admin & Maintenance",
+          icon: "🔧",
+          commands: [
+            {command: "maintenance auto-purge --enable", description: "Activation purge auto maintenance"},
+            {command: "admin lockdown enable --strict", description: "Verrouillage admin mode urgence"},
+            {command: "ia22 update --check-only", description: "Vérification mise à jour disponible"},
+            {command: "ia22 logs export --encrypted", description: "Export logs chiffrés"}
+          ]
+        },
+        {
+          name: "Debug & Monitoring",
+          icon: "🛠️",
+          commands: [
+            {command: "sys status --full --verbose", description: "Rapport système complet détaillé"},
+            {command: "debug orbital relay --trace", description: "Debug connexion relais orbital"},
+            {command: "monitor entropy --real-time", description: "Monitoring entropie en temps réel"},
+            {command: "version check --all", description: "Vérification versions tous modules"}
+          ]
+        }
+      ]
+    };
+
+    let allCommands = commandsData.categories.flatMap(cat => 
+      cat.commands.map(cmd => ({ ...cmd, category: cat.name, icon: cat.icon }))
+    );
+
+    function renderCommands(commands) {
+      const container = document.getElementById('commands-container');
+      container.innerHTML = '';
+
+      if (commands.length === 0) {
+        document.getElementById('no-results').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('no-results').style.display = 'none';
+
+      const categories = [...new Set(commands.map(c => c.category))];
+      categories.forEach(catName => {
+        const catCommands = commands.filter(c => c.category === catName);
+        if (catCommands.length === 0) return;
+
+        const cat = commandsData.categories.find(c => c.name === catName);
+        const section = document.createElement('div');
+        section.className = 'category';
+        section.innerHTML = `<h2>${cat.icon} ${catName}</h2>`;
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        thead.innerHTML = `<tr><th>Commande</th><th>Description</th><th>Actions</th></tr>`;
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        catCommands.forEach(cmd => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><code>${cmd.command}</code></td>
+            <td>${cmd.description}</td>
+            <td>
+              <button onclick="navigator.clipboard.writeText('${cmd.command.replace(/'/g, "\\'")}'); alert('Copié !')">Copier</button>
+              <button onclick="executeCommand('${cmd.command.replace(/'/g, "\\'")}')">Exécuter (simulé)</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        section.appendChild(table);
+        container.appendChild(section);
+      });
+    }
+
+    // Recherche live
+    document.getElementById('search').addEventListener('input', e => {
+      const term = e.target.value.toLowerCase().trim();
+      const filtered = term ? allCommands.filter(cmd =>
+        cmd.command.toLowerCase().includes(term) ||
+        cmd.description.toLowerCase().includes(term) ||
+        cmd.category.toLowerCase().includes(term)
+      ) : allCommands;
+      renderCommands(filtered);
+    });
+
+    function clearSearch() {
+      document.getElementById('search').value = '';
+      renderCommands(allCommands);
+    }
+
+    function exportCSV() {
+      if (allCommands.length === 0) return alert('Aucune commande à exporter');
+      
+      let csv = 'Catégorie,Commande,Description\n';
+      allCommands.forEach(cmd => {
+        csv += `"${cmd.category.replace(/"/g,'""')}","${cmd.command.replace(/"/g,'""')}","${cmd.description.replace(/"/g,'""')}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'ia22_commands.csv';
+      link.click();
+    }
+
+    function executeCommand(cmd) {
+      console.log('[IA22 SIMULATION] Exécution :', cmd);
+      alert('[SIMULATION] Commande exécutée : ' + cmd + '\nRésultat : SUCCESS ◇ □ ☰\n(Endpoint API non configuré – simulation seulement)');
+    }
+
+    // Affichage initial
+    renderCommands(allCommands);
+  </script>
+</body>
+  </html>

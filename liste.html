@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA22_LOGIC — Catalogue des commandes</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0a0a0a;
+      color: #0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00ff88;
+      text-shadow: 0 0 10px #0f0;
+    }
+    #search {
+      width: 100%;
+      padding: 12px;
+      margin: 20px 0;
+      background: #111;
+      color: #0f0;
+      border: 1px solid #0f0;
+      font-size: 1.1em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #111;
+      border: 1px solid #0f0;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #0f0;
+      text-align: left;
+    }
+    th {
+      background: #0a330a;
+    }
+    button {
+      background: #0f0;
+      color: #000;
+      border: none;
+      padding: 8px 12px;
+      margin: 0 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #00cc00;
+    }
+    .category {
+      margin-bottom: 40px;
+    }
+    #controls {
+      margin: 20px 0;
+    }
+    #no-results {
+      color: #ff4444;
+      font-size: 1.2em;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>IA22_LOGIC — Catalogue des commandes</h1>
+  <p>Liste centralisée des commandes NetSecurePro IA – Système souverain, privacy-first.</p>
+
+  <input type="text" id="search" placeholder="Rechercher une commande ou description..." />
+
+  <div id="controls">
+    <button onclick="clearSearch()">Effacer recherche</button>
+    <button onclick="exportCSV()">Exporter en CSV</button>
+  </div>
+
+  <div id="no-results">Aucune commande trouvée.</div>
+
+  <div id="commands-container"></div>
+
+  <script>
+    const dataUrl = 'commands.json'; // Mets ton fichier JSON ici
+
+    let allCommands = [];
+
+    fetch(dataUrl)
+      .then(res => res.json())
+      .then(data => {
+        allCommands = data.categories.flatMap(cat => 
+          cat.commands.map(cmd => ({ ...cmd, category: cat.name, icon: cat.icon }))
+        );
+        renderCommands(allCommands);
+      })
+      .catch(err => {
+        document.getElementById('commands-container').innerHTML = '<p style="color:red">Erreur chargement JSON : ' + err + '</p>';
+      });
+
+    function renderCommands(commands) {
+      const container = document.getElementById('commands-container');
+      container.innerHTML = '';
+
+      if (commands.length === 0) {
+        document.getElementById('no-results').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('no-results').style.display = 'none';
+
+      const categories = [...new Set(commands.map(c => c.category))];
+      categories.forEach(catName => {
+        const catCommands = commands.filter(c => c.category === catName);
+        if (catCommands.length === 0) return;
+
+        const cat = data.categories.find(c => c.name === catName);
+        const section = document.createElement('div');
+        section.className = 'category';
+        section.innerHTML = `<h2>${cat.icon} ${catName}</h2>`;
+
+        const table = document.createElement('table');
+        catCommands.forEach(cmd => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><code>${cmd.command}</code></td>
+            <td>${cmd.description}</td>
+            <td>
+              <button onclick="copyCommand('${cmd.command}')">Copier</button>
+              <button onclick="executeCommand('${cmd.command}')">Exécuter (simulé)</button>
+            </td>
+          `;
+          table.appendChild(tr);
+        });
+
+        section.appendChild(table);
+        container.appendChild(section);
+      });
+    }
+
+    function copyCommand(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Commande copiée : ' + text);
+      });
+    }
+
+    function executeCommand(cmd) {
+      console.log('[IA22 SIMULATION] Exécution :', cmd);
+      alert('[SIMULATION] Commande exécutée : ' + cmd + '\nRésultat : SUCCESS ◇ □ ☰');
+    }
+
+    function clearSearch() {
+      document.getElementById('search').value = '';
+      renderCommands(allCommands);
+    }
+
+    function exportCSV() {
+      if (allCommands.length === 0) return alert('Aucune commande à exporter');
+      
+      let csv = 'Catégorie,Commande,Description\n';
+      allCommands.forEach(cmd => {
+        csv += `"${cmd.category.replace(/"/g,'""')}","${cmd.command.replace(/"/g,'""')}","${cmd.description.replace(/"/g,'""')}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'ia22_commands.csv';
+      link.click();
+    }
+
+    // Recherche live
+    document.getElementById('search').addEventListener('input', e => {
+      const term = e.target.value.toLowerCase().trim();
+      if (!term) return renderCommands(allCommands);
+
+      const filtered = allCommands.filter(cmd =>
+        cmd.command.toLowerCase().includes(term) ||
+        cmd.description.toLowerCase().includes(term) ||
+        cmd.category.toLowerCase().includes(term)
+      );
+
+      renderCommands(filtered);
+    });
+  </script>
+</body>
+</html>

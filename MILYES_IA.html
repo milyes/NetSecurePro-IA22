@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILYES_IA Terminal vFinal</title>
+    <style>
+        /* Esthétique Console Noire/Verte */
+        body { 
+            margin: 0; 
+            background: #000; 
+            color: #0f0; 
+            font-family: 'Courier New', Courier, monospace; 
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #terminal {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            border-bottom: 1px solid #0f0;
+            white-space: pre-wrap;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 10px;
+            background: #000;
+        }
+
+        .prompt {
+            color: #0f0;
+            margin-right: 10px;
+        }
+
+        #user-input {
+            background: transparent;
+            border: none;
+            color: #0f0;
+            outline: none;
+            flex-grow: 1;
+            font-family: inherit;
+            font-size: 1.1em;
+        }
+
+        .system-msg { color: #888; font-style: italic; }
+        .error-msg { color: #f00; font-weight: bold; }
+        .auth-status { color: #0ff; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="terminal">
+    <div class="system-msg">[SYSTÈME] Initialisation de MILYES_IA...</div>
+    <div class="system-msg">[INFO] En attente d'authentification (admin/password123 par défaut).</div>
+</div>
+
+<div class="input-area">
+    <span class="prompt">root@milyes_ia:~#</span>
+    <input type="text" id="user-input" autofocus autocomplete="off">
+</div>
+
+<script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('user-input');
+    const API_URL = "http://127.0.0.1:8000";
+    let jwtToken = null;
+
+    // Ajouter du texte au terminal
+    function log(message, type = '') {
+        const div = document.createElement('div');
+        div.className = type;
+        div.textContent = message;
+        terminal.appendChild(div);
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    // Gestion de l'authentification automatique au démarrage pour test
+    async function login() {
+        try {
+            log("[CONNEXION] Tentative d'accès sécurisé...", "system-msg");
+            const response = await fetch(`${API_URL}/token`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ 'username': 'admin', 'password': 'password123' })
+            });
+
+            if (!response.ok) throw new Error("Échec d'authentification");
+
+            const data = await response.json();
+            jwtToken = data.access_token;
+            log("[SUCCÈS] Token JWT généré. Session sécurisée active.", "auth-status");
+        } catch (err) {
+            log("[ERREUR] Impossible de joindre l'API FastAPI. Vérifiez que le serveur tourne.", "error-msg");
+        }
+    }
+
+    // Envoi du message à l'IA
+    async function sendMessage(text) {
+        if (!jwtToken) {
+            log("[ALERTE] Authentification requise. Réessayez...", "error-msg");
+            await login();
+            return;
+        }
+
+        log(`USER: ${text}`);
+
+        try {
+            const response = await fetch(`${API_URL}/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${jwtToken}`
+                },
+                body: JSON.stringify({ message: text })
+            });
+
+            const data = await response.json();
+            log(`IA_RESPONSE: ${data.response}`, "auth-status");
+        } catch (err) {
+            log("[ERREUR] Échec de la transmission réseau.", "error-msg");
+        }
+    }
+
+    // Intercepter la touche Entrée
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && input.value.trim() !== '') {
+            const msg = input.value;
+            input.value = '';
+            sendMessage(msg);
+        }
+    });
+
+    // Lancer la connexion au chargement
+    window.onload = login;
+</script>
+
+</body>
+</html>

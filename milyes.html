@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILYES Interface</title>
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --deep-space: #06060e;
+            --terminal-green: #0f0;
+            --warning-red: #ff3e3e;
+        }
+        body {
+            background-color: var(--deep-space);
+            color: var(--neon-blue);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .console {
+            border: 1px solid var(--neon-blue);
+            padding: 30px;
+            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+        .header { 
+            text-align: center; 
+            border-bottom: 2px double var(--neon-blue); 
+            padding-bottom: 15px; 
+            margin-bottom: 25px; 
+        }
+        .status-line { margin: 12px 0; font-size: 1.1rem; }
+        .symbol { color: var(--terminal-green); margin-right: 15px; font-weight: bold; }
+        .blink { animation: blinker 1.2s step-end infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        
+        #log-terminal {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 15px;
+            height: 150px;
+            overflow-y: auto;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--terminal-green);
+        }
+
+        .btn {
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            padding: 12px 24px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+        }
+        .btn:hover { 
+            background: var(--neon-blue); 
+            color: var(--deep-space);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+        .btn:active { transform: scale(0.98); }
+    </style>
+</head>
+<body>
+    <div class="console">
+        <div class="header">
+            <h1>◇□☰ MILYES CORE OS ☰□◇</h1>
+        </div>
+        
+        <div id="status-container">
+            <div class="status-line"><span class="symbol">◇</span> INIT_HAME : <span style="color:var(--terminal-green)">[ CHARGÉ ]</span></div>
+            <div class="status-line"><span class="symbol">□</span> SIGN_LOGIC : <span style="color:var(--terminal-green)">[ VALIDÉ ]</span></div>
+            <div class="status-line"><span class="symbol">☰</span> ENGAGE_WILL : <span style="color:var(--terminal-green)">[ ACTIF ]</span></div>
+            <div class="status-line"><span class="symbol">◇</span> ORBITAL_SYNC: <span style="color:var(--terminal-green)">[ SYNCHRONISÉ ]</span></div>
+        </div>
+
+        <div id="log-terminal">
+            > Système initialisé...<br>
+            > En attente d'entrée utilisateur...
+        </div>
+
+        <div class="status-line" style="margin-top:20px; font-weight: bold;">
+            SYSTEM_STATUS: <span class="blink" style="color: var(--terminal-green);">DISPONIBLE_</span>
+        </div>
+
+        <button class="btn" onclick="triggerSequence()">Lancer la Séquence Suivante</button>
+    </div>
+
+    <script>
+        const logs = [
+            "Vérification des protocoles de sécurité...",
+            "Accès aux banques de données MILYES...",
+            "Signature cryptographique détectée.",
+            "Liaison orbitale maintenue à 98%.",
+            "Initialisation de la phase de déploiement..."
+        ];
+        let logIndex = 0;
+
+        function triggerSequence() {
+            const terminal = document.getElementById('log-terminal');
+            if (logIndex < logs.length) {
+                const p = document.createElement('div');
+                p.innerHTML = `> ${logs[logIndex]}`;
+                terminal.appendChild(p);
+                terminal.scrollTop = terminal.scrollHeight;
+                logIndex++;
+            } else {
+                const p = document.createElement('div');
+                p.style.color = 'var(--neon-blue)';
+                p.innerHTML = `> PROTOCOLE COMPLET : SYSTÈME EN ATTENTE.`;
+                terminal.appendChild(p);
+                terminal.scrollTop = terminal.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

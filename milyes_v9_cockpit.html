@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MILYES_IA v9 — Cockpit NÉO_DZ</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #050505;
+        font-family: "Courier New", monospace;
+        color: #37ff6f;
+        overflow: hidden;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100vh;
+        gap: 8px;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .panel {
+        background: #0b0f0b;
+        border: 1px solid #1aff66;
+        border-radius: 6px;
+        padding: 10px;
+        overflow-y: auto;
+        box-shadow: 0 0 20px rgba(0,255,120,0.1);
+        white-space: pre-line;
+    }
+
+    .title {
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #1aff66;
+        border-bottom: 1px solid #1aff66;
+        padding-bottom: 4px;
+    }
+
+    .alert {
+        color: #ff3b3b;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="grid">
+
+    <!-- PANEL 1 : TERMINAL DU NOYAU -->
+    <div class="panel" id="terminal">
+        <div class="title">[ M-CORE 9 ] Noyau MILYES_IA v9</div>
+    </div>
+
+    <!-- PANEL 2 : FLUX RÉSEAU -->
+    <div class="panel" id="network">
+        <div class="title">[ VECTOR_SHIELD ] Flux réseau</div>
+    </div>
+
+    <!-- PANEL 3 : MODULES IA -->
+    <div class="panel" id="modules">
+        <div class="title">[ HAME / ORBITAL_SYNC / LOGIC_SIGN ] Modules IA</div>
+    </div>
+
+</div>
+
+<script>
+/* ----------------------------------------------
+    PANNEAU 1 — TERMINAL DU NOYAU
+---------------------------------------------- */
+const coreLines = [
+    "[✓] M-CORE 9 : Initialisation OK.",
+    "[✓] Chargement Kernel Optimisé...",
+    "[✓] Accès CPU/GPU direct établi.",
+    "[✓] Mode Zero-Cloud : actif.",
+    "[✓] Conteneurisation Hardened : stable.",
+    "[✓] Séquence NÉO_DZ : en cours...",
+    "[✓] Noyau MILYES_IA v9 opérationnel."
+];
+
+let c = 0;
+function loadCore() {
+    if (c < coreLines.length) {
+        document.getElementById("terminal").innerHTML += coreLines[c] + "\n";
+        c++;
+        setTimeout(loadCore, 600);
+    }
+}
+loadCore();
+
+/* ----------------------------------------------
+    PANNEAU 2 — FLUX RÉSEAU (SIMULATION)
+---------------------------------------------- */
+function randomIP() {
+    return `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
+}
+
+function networkFlow() {
+    const net = document.getElementById("network");
+    const alertChance = Math.random() < 0.04; // 4% alerte
+    const line = alertChance ?
+        `[!] Alerte réseau : activité suspecte détectée depuis ${randomIP()}` :
+        `[+] Flux normal : paquet reçu depuis ${randomIP()}`;
+
+    const span = `<span class="${alertChance ? 'alert' : ''}">${line}</span>\n`;
+    net.innerHTML += span;
+    net.scrollTop = net.scrollHeight;
+}
+setInterval(networkFlow, 450);
+
+/* ----------------------------------------------
+    PANNEAU 3 — MODULES IA
+---------------------------------------------- */
+const mods = [
+    "[HAME] Analyse comportementale active.",
+    "[LOGIC_SIGN] Décision cognitive stable.",
+    "[ORBITAL_SYNC] Synchronisation orbitale OK.",
+    "[MEMORY_NET v9] Optimisation mémoire en cours...",
+    "[VECTOR_SHIELD] Détection en temps réel active.",
+];
+
+let m = 0;
+function moduleCycle() {
+    const modPanel = document.getElementById("modules");
+    modPanel.innerHTML += mods[m] + "\n";
+    modPanel.scrollTop = modPanel.scrollHeight;
+    m = (m + 1) % mods.length;
+}
+setInterval(moduleCycle, 1200);
+
+</script>
+
+</body>
+</html>

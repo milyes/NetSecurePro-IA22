@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>AIMEDIXAL Sovereign Edition</title>
+
+<meta name="description"
+content="AIMEDIXAL Sovereign Edition - IA Clinique Souveraine">
+
+<meta name="theme-color"
+content="#071018">
+
+<style>
+
+:root{
+ --bg:#071018;
+ --panel:#102130;
+ --cyan:#00e5ff;
+ --text:#edf4ff;
+ --muted:#8aa0b8;
+ --red:#ff5555;
+ --green:#22c55e;
+}
+
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+html{
+ scroll-behavior:smooth;
+}
+
+body{
+ font-family:Segoe UI,Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ line-height:1.6;
+}
+
+/* ==========================
+   MENU
+========================== */
+
+.topbar{
+
+ position:fixed;
+ top:0;
+ left:0;
+ right:0;
+
+ z-index:1000;
+
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+
+ padding:1rem;
+
+ background:rgba(7,16,24,.94);
+
+ backdrop-filter:blur(14px);
+
+ border-bottom:1px solid rgba(0,229,255,.15);
+
+ transform:translateY(-100%);
+ opacity:0;
+
+ transition:
+ transform .35s ease,
+ opacity .35s ease;
+}
+
+.topbar.visible{
+ transform:translateY(0);
+ opacity:1;
+}
+
+.logo{
+ text-decoration:none;
+ color:var(--cyan);
+ font-weight:700;
+ font-size:1.1rem;
+}
+
+.menu-btn{
+
+ background:none;
+ border:none;
+
+ color:white;
+
+ font-size:1.8rem;
+ cursor:pointer;
+
+}
+
+.nav{
+
+ position:absolute;
+ top:100%;
+ left:0;
+ right:0;
+
+ display:flex;
+ flex-direction:column;
+
+ background:#102130;
+
+ overflow:hidden;
+ max-height:0;
+
+ transition:max-height .3s ease;
+}
+
+.nav.open{
+ max-height:500px;
+}
+
+.nav a{
+
+ padding:1rem;
+
+ color:white;
+ text-decoration:none;
+
+ border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav a:hover{
+ background:#163145;
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+ min-height:100vh;
+
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+
+ text-align:center;
+
+ padding:2rem;
+}
+
+.hero h1{
+ font-size:clamp(2.5rem,7vw,5rem);
+ color:var(--cyan);
+}
+
+.subtitle{
+ margin-top:1rem;
+ color:var(--muted);
+ max-width:800px;
+}
+
+.badges{
+
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+
+ gap:.75rem;
+
+ margin-top:2rem;
+}
+
+.badge{
+
+ border:1px solid var(--cyan);
+ border-radius:999px;
+
+ padding:.8rem 1rem;
+
+ color:var(--cyan);
+}
+
+/* ==========================
+   ARCHITECTURE
+========================== */
+
+section{
+ padding:5rem 1rem;
+}
+
+.container{
+ max-width:1200px;
+ margin:auto;
+}
+
+.section-title{
+
+ text-align:center;
+ margin-bottom:3rem;
+
+ color:var(--cyan);
+}
+
+.shield{
+
+ width:100px;
+ height:100px;
+
+ display:flex;
+ align-items:center;
+ justify-content:center;
+
+ margin:auto;
+
+ border-radius:50%;
+ background:var(--green);
+
+ font-size:2rem;
+
+ box-shadow:
+ 0 0 25px rgba(34,197,94,.6);
+
+ animation:pulse 2s infinite;
+}
+
+.network{
+
+ margin-top:2rem;
+
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+
+ gap:20px;
+}
+
+.node{
+
+ width:min(100%,320px);
+
+ background:var(--panel);
+
+ border:2px solid var(--cyan);
+
+ border-radius:18px;
+
+ padding:1.5rem;
+
+ text-align:center;
+}
+
+.node h3{
+ margin-bottom:.5rem;
+}
+
+.node p{
+ color:var(--muted);
+}
+
+.core{
+
+ box-shadow:
+ 0 0 35px rgba(0,229,255,.25);
+}
+
+.flow{
+
+ width:4px;
+ height:60px;
+
+ background:
+ repeating-linear-gradient(
+ to bottom,
+ var(--cyan) 0 10px,
+ transparent 10px 20px);
+
+ animation:flow 1s linear infinite;
+}
+
+.blocked{
+
+ margin-top:3rem;
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(auto-fit,minmax(180px,1fr));
+
+ gap:1rem;
+}
+
+.danger{
+
+ background:#22161a;
+
+ border:1px solid var(--red);
+
+ border-radius:15px;
+
+ text-align:center;
+
+ padding:1rem;
+}
+
+/* ==========================
+   SIGNATURE
+========================== */
+
+.signature-card{
+
+ background:var(--panel);
+
+ border:1px solid rgba(0,229,255,.15);
+
+ border-radius:24px;
+
+ max-width:900px;
+
+ margin:auto;
+
+ padding:2rem;
+}
+
+.signature-card h3{
+
+ text-align:center;
+ margin-bottom:2rem;
+
+ color:var(--cyan);
+}
+
+.sig-grid{
+
+ display:grid;
+ gap:1.25rem;
+}
+
+.label{
+
+ display:block;
+
+ color:var(--muted);
+
+ font-size:.75rem;
+
+ letter-spacing:.12em;
+}
+
+.value{
+ color:white;
+}
+
+.value a{
+ color:var(--cyan);
+ text-decoration:none;
+}
+
+.research-badge{
+
+ display:block;
+
+ width:max-content;
+
+ margin:0 auto 1.5rem;
+
+ border-radius:999px;
+
+ border:1px solid var(--cyan);
+
+ padding:.75rem 1rem;
+
+ color:var(--cyan);
+}
+
+.footer{
+
+ text-align:center;
+ color:var(--muted);
+
+ padding:3rem 1rem;
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes pulse{
+
+ 0%{
+  transform:scale(1);
+ }
+
+ 50%{
+  transform:scale(1.08);
+ }
+
+ 100%{
+  transform:scale(1);
+ }
+
+}
+
+@keyframes flow{
+
+ from{
+  background-position:0 0;
+ }
+
+ to{
+  background-position:0 20px;
+ }
+
+}
+
+/* ==========================
+   DESKTOP
+========================== */
+
+@media(min-width:900px){
+
+ .menu-btn{
+  display:none;
+ }
+
+ .nav{
+
+  position:static;
+
+  max-height:none;
+
+  flex-direction:row;
+
+  background:none;
+
+  overflow:visible;
+ }
+
+ .nav a{
+
+  padding:.75rem 1rem;
+
+  border:none;
+ }
+
+ .network{
+
+  flex-direction:row;
+  justify-content:center;
+ }
+
+ .flow{
+
+  width:120px;
+  height:4px;
+
+  background:
+  repeating-linear-gradient(
+  to right,
+  var(--cyan) 0 10px,
+  transparent 10px 20px);
+ }
+
+}
+
+/* ==========================
+   IMPRESSION
+========================== */
+
+@media print{
+
+ @page{
+  size:A4;
+  margin:12mm;
+ }
+
+ body{
+  background:white;
+  color:black;
+ }
+
+ .topbar,
+ .menu-btn,
+ .flow{
+  display:none!important;
+ }
+
+ .hero{
+  min-height:auto;
+ }
+
+ .node,
+ .danger,
+ .signature-card{
+
+  color:black;
+
+  background:white;
+
+  border:1px solid #777;
+
+  box-shadow:none;
+ }
+
+ .badge{
+
+  border:1px solid #777;
+
+  color:black;
+ }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+#
+AIMEDIXAL
+</a>
+
+<button id="menuBtn"
+class="menu-btn"
+aria-label="Menu">
+☰
+</button>
+
+<nav id="mobileMenu" class="nav">
+
+#architectureArchitecture</a>
+
+#sovereignSouveraineté</a>
+
+#signatureSignature</a>
+
+AIMEDIXAL_Sovereign_OnePager.pdf
+PDF
+</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>AIMEDIXAL Sovereign Edition</h1>
+
+<p class="subtitle">
+
+IA Clinique Souveraine • Zero Trust Native •
+100 % Locale • Conformité Loi 25 • Auditabilité Complète
+
+</p>
+
+<div class="badges">
+
+<div class="badge">LOI 25</div>
+<div class="badge">ZERO TRUST</div>
+<div class="badge">ON-PREMISE</div>
+<div class="badge">AIR GAPPED</div>
+
+</div>
+
+</section>
+
+<section id="architecture">
+
+<div class="container">
+
+<h2 class="section-title">
+Architecture Souveraine
+</h2>
+
+<div class="shield">
+🔒
+</div>
+
+<div class="network">
+
+<div class="node">
+<h3>Patients</h3>
+<p>Données médicales locales</p>
+</div>
+
+<div class="flow"></div>
+
+<div class="node core">
+<h3>AIMEDIXAL</h3>
+<p>Moteur IA Souverain</p>
+</div>
+
+<div class="flow"></div>
+
+<div class="node">
+<h3>Cliniciens</h3>
+<p>Aide décisionnelle interne</p>
+</div>
+
+</div>
+
+<div class="blocked">
+
+<div class="danger">
+<h3>✕ Internet</h3>
+</div>
+
+<div class="danger">
+<h3>✕ Cloud Public</h3>
+</div>
+
+<div class="danger">
+<h3>✕ API Externes</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="signature">
+
+<div class="container">
+
+<div class="signature-card">
+
+<div class="research-badge">
+🔒 IA SOUVERAINE
+</div>
+
+<h3>Recherche et Traçabilité</h3>
+
+<div class="sig-grid">
+
+<div>
+<span class="label">RECHERCHEUR</span>
+<span class="value">
+Mohammed Ilyes Zoubirou
+</span>
+</div>
+
+<div>
+<span class="label">ENTREPRISE</span>
+<span class="value">
+NetSecurePro IA
+</span>
+</div>
+
+<div>
+<span class="label">LOCATAIRE ENTRA ID</span>
+<span class="value">
+NetSecurePro_IA
+</span>
+</div>
+
+<div>
+<span class="label">LINKEDIN</span>
+<span class="value">
+<a href="https://linkedin.com/in/zoubirou">
+linkedin.com/in/zoubirou
+</a>
+</span>
+</div>
+
+<div>
+<span class="label">ORCID</span>
+<span class="value">
+https://orcid.org/0009-0007-7571-3178
+0009-0007-7571-3178
+</a>
+</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<p>
+AIMEDIXAL Sovereign Edition • NetSecurePro IA
+</p>
+
+<p id="generatedDate"></p>
+
+</footer>
+
+<script>
+
+document.getElementById("generatedDate")
+.textContent =
+"Version générée le " +
+new Date().toLocaleDateString("fr-CA");
+
+const btn =
+document.getElementById("menuBtn");
+
+const nav =
+document.getElementById("mobileMenu");
+
+btn.addEventListener("click", () => {
+
+ nav.classList.toggle("open");
+
+});
+
+let lastScroll = 0;
+
+const header =
+document.querySelector(".topbar");
+
+window.addEventListener("scroll", () => {
+
+ const current =
+ window.scrollY;
+
+ if(current > 150){
+
+  header.classList.add("visible");
+
+ }else{
+
+  header.classList.remove("visible");
+
+ }
+
+ lastScroll = current;
+
+});
+
+document
+.querySelectorAll(".nav a")
+.forEach(link => {
+
+ link.addEventListener("click", () => {
+
+  if(window.innerWidth < 900){
+
+   nav.classList.remove("open");
+
+  }
+
+ });
+
+});
+
+</script>
+
+</body>
+</html>
